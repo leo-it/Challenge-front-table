@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UsePagination from "../pagination/UsePagination";
 import TableCommerce from "../table/Table";
-import Paginat from "../pagination/Pagination";
+import Pagination from "../pagination/Pagination";
 
 function ScreenTable({ axiosData }) {
   const {
@@ -15,11 +15,10 @@ function ScreenTable({ axiosData }) {
     currentItems,
   } = UsePagination(axiosData);
 
-  console.log(currentItems);
   return (
     <>
       <TableCommerce currentItems={currentItems} />
-      <Paginat
+      <Pagination
         currentPage={currentPage}
         handleNextbtn={handleNextbtn}
         handlePrevbtn={handlePrevbtn}

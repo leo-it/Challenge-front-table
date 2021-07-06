@@ -40,7 +40,7 @@ const TableCommerce = ({ currentItems }) => {
                   <Td>{element.Concepto6}</Td>
                   <Td>{element.BalanceActual}</Td>
                   <Td>
-                    {element.Activo ? <td>Activo</td> : <td>Inactivo</td>}
+                    {element.Activo ? <p>Activo</p> : <p>Inactivo</p>}
                   </Td>
                   <Td>{element.UltimaVenta}</Td>
                   <Td>

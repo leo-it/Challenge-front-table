@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 function UsePagination(axiosData) {
-/*   console.log(axiosData);
- */  const [currentPage, setcurrentPage] = useState(1);
-  //traerlo de la base de datos el 10
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [currentPage, setcurrentPage] = useState(axiosData.page);
+  const [rowsPerPage, setRowsPerPage] = useState(axiosData.rowsPerPage);
 
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
