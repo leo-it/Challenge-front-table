@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import TableCommerce from "./components/table/Table";
+import ScreenTable from "./components/Screens/Screen";
+import AxiosCustomer from "./services/Axios";
+
 
 function App() {
+  const [axiosData, setAxiosData] = useState(null);
+  useEffect(() => {
+    AxiosCustomer().then((data) => setAxiosData(data));
+  }, []);
+
   return (
+    //puedo hacer un if que si trae info de una api bien, si no use el dummy.
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {axiosData ? (
+        <>
+          <ScreenTable axiosData={axiosData} />
+        </>
+      
+      ) : (
+        <>
+          <h1>cargando</h1>
+        </>
+      )}
+     
     </div>
   );
 }
