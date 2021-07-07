@@ -1,16 +1,12 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import TableCommerce from "./components/table/Table";
+import React from "react";
 import ScreenTable from "./components/Screens/Screen";
-import AxiosCustomer from "./services/Axios";
+import UseAxios from "./services/Axios";
 
 
 function App() {
-  const [axiosData, setAxiosData] = useState(null);
-  useEffect(() => {
-    AxiosCustomer().then((data) => setAxiosData(data));
-  }, []);
 
+const {axiosData} = UseAxios()
   return (
     //puedo hacer un if que si trae info de una api bien, si no use el dummy.
     <div className="App">

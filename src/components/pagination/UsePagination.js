@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-function UsePagination(axiosData) {
+function UsePagination(axiosData, list) {
   const [currentPage, setcurrentPage] = useState(axiosData.page);
   const [rowsPerPage, setRowsPerPage] = useState(axiosData.rowsPerPage);
 
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(6);
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-
   const handleClick = (event) => {
     setcurrentPage(Number(event.target.id));
   };
 
   const pages = [];
-  for (let i = 1; i <= Math.ceil(axiosData.data.length / rowsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(list.length / rowsPerPage); i++) {
     pages.push(i);
   }
   const indexOfLastItem = currentPage * rowsPerPage;
   const indexOfFirstItem = indexOfLastItem - rowsPerPage;
-  const currentItems = axiosData.data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = list.slice(indexOfFirstItem, indexOfLastItem);
 
   const renderPageNumbers = pages.map((number) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {

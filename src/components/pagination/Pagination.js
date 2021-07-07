@@ -11,7 +11,6 @@ function Pagination({  currentPage,
   currentItems, }) {
 
 
-  console.log(currentPage);
   return (
     <>
       
