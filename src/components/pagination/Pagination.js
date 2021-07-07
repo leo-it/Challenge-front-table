@@ -18,7 +18,7 @@ function Pagination({
           <li>
             <Button
               onClick={handlePrevbtn}
-              disabled={currentPage == pages[0] ? true : false}
+              disabled={currentPage === pages[0] ? true : false}
             >
               Prev
             </Button>
@@ -30,7 +30,7 @@ function Pagination({
           <li>
             <Button
               onClick={handleNextbtn}
-              disabled={currentPage == pages[pages.length - 1] ? true : false}
+              disabled={currentPage === pages[pages.length - 1] ? true : false}
             >
               Next
             </Button>

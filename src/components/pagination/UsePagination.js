@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function UsePagination(axiosData, list) {
   const [currentPage, setcurrentPage] = useState(axiosData.page);
@@ -26,7 +26,7 @@ function UsePagination(axiosData, list) {
           key={number}
           id={number}
           onClick={handleClick}
-          className={currentPage == number ? "active" : null}
+          className="active"/* {currentPage == number ? "active" : null} */
         >
           {number}
         </li>
@@ -48,7 +48,7 @@ function UsePagination(axiosData, list) {
   const handlePrevbtn = () => {
     setcurrentPage(currentPage - 1);
 
-    if ((currentPage - 1) % pageNumberLimit == 0) {
+    if ((currentPage - 1) % pageNumberLimit === 0) {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
@@ -78,7 +78,6 @@ function UsePagination(axiosData, list) {
     pageDecrementBtn,
     renderPageNumbers,
     pageIncrementBtn,
-    currentItems,
   };
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Center, Box, Button } from "@chakra-ui/react";
+import { Input, Center, Box } from "@chakra-ui/react";
 
 export const SearchBox = ({ setQuery }) => {
   return (

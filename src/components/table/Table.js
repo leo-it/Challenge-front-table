@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, Box } from "@chakra-ui/react";
 import { ArrowUpDownIcon } from '@chakra-ui/icons'
 

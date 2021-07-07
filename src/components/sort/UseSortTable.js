@@ -15,7 +15,7 @@ const UseSortTable = (listToSort, originalKey) => {
   // ordenamos la lista con el useEffect
   useEffect(() => {
     setList(sort_lists(originalKey));
-  }, []);
+  }, [originalKey]);
 
   // devolvemos el estado que contiene la lista
   // ..el método para actualizar el estado
