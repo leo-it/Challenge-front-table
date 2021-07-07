@@ -8,7 +8,6 @@ function App() {
   const [dataQuery, setDataQuery] = useState("");
   const { axiosData } = UseAxios(dataActive, dataQuery);
   return (
-    //puedo hacer un if que si trae info de una api bien, si no use el dummy.
     <div className="App">
       {axiosData ? (
         <>
