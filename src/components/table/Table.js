@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, Box } from "@chakra-ui/react";
+import { ArrowUpDownIcon } from '@chakra-ui/icons'
 
 const TableCommerce = ({ currentItems,setOrder,setStatus,status }) => {
 
@@ -15,9 +16,10 @@ const TableCommerce = ({ currentItems,setOrder,setStatus,status }) => {
         <Table variant="striped" borderRadius={20}>
           <Thead>
             <Tr>
-              <Th onClick={(e)=>{handleClick("id")}}>id</Th>
+              <Th onClick={(e)=>{handleClick("id")}}>id <ArrowUpDownIcon /></Th>
               <Th >Comercio</Th>
-              <Th onClick={(e)=>{handleClick("CUIT")}}>CUIT</Th>
+              
+              <Th onClick={(e)=>{handleClick("CUIT")}}>CUIT <ArrowUpDownIcon /></Th>
               <Th>Concepto 1</Th>
               <Th>Concepto2</Th>
               <Th>Concepto 3</Th>
