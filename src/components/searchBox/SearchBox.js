@@ -1,26 +1,24 @@
-import React,{useState} from "react";
+import React from "react";
 import { Input, Center, Box,Button } from "@chakra-ui/react";
 
-export const SearchBox = () => {
-const [search, setSearch] = useState()
-const searchField =()=>{
-    //fetch
-    console.log("search");
-}
-console.log(search);
+export const SearchBox = ({setQuery}) => {
+
+/* const handleClick =()=>{
+  setQuery()
+} */
   return (
     <div>
-      <Box m="10">
+      <Box w="50%" m="10">
         <Center>
           <Input
           name="search"
             placeholder="Buscar"
             onChange={(event) => {
-                setSearch(event.target.value);
+              setQuery(event.target.value);
             }}
           />
-          <Button onClick={searchField}>Search</Button>
-        </Center>
+{/*           <Button onClick={handleClick}>Search</Button>
+ */}        </Center>
       </Box>
     </div>
   );

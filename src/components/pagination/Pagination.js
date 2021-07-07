@@ -1,41 +1,42 @@
 import React from "react";
 import "./style.css";
+import { Center, Button } from "@chakra-ui/react";
 
-function Pagination({  currentPage,
+function Pagination({
+  currentPage,
   handleNextbtn,
   handlePrevbtn,
   pages,
   pageDecrementBtn,
   renderPageNumbers,
   pageIncrementBtn,
-  currentItems, }) {
-
-
+}) {
   return (
     <>
-      
-      <ul className="pageNumbers">
-        <li>
-          <button
-            onClick={handlePrevbtn}
-            disabled={currentPage == pages[0] ? true : false}
-          >
-            Prev
-          </button>
-        </li>
-        {pageDecrementBtn}
-        {renderPageNumbers}
-        {pageIncrementBtn}
+      <Center>
+        <ul className="pageNumbers">
+          <li>
+            <Button
+              onClick={handlePrevbtn}
+              disabled={currentPage == pages[0] ? true : false}
+            >
+              Prev
+            </Button>
+          </li>
+          {pageDecrementBtn}
+          {renderPageNumbers}
+          {pageIncrementBtn}
 
-        <li>
-          <button
-            onClick={handleNextbtn}
-            disabled={currentPage == pages[pages.length - 1] ? true : false}
-          >
-            Next
-          </button>
-        </li>
-      </ul>
+          <li>
+            <Button
+              onClick={handleNextbtn}
+              disabled={currentPage == pages[pages.length - 1] ? true : false}
+            >
+              Next
+            </Button>
+          </li>
+        </ul>
+      </Center>
     </>
   );
 }

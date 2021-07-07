@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { Button } from "@chakra-ui/react";
+import { Select, Box } from "@chakra-ui/react";
 
-const FilterActive = () => {
-    const active = ()=>{
+const FilterActive = ({ setValueActive }) => {
+  const handleActive = (e) => {
+    setValueActive(e.target.value);
+  };
 
-    }
-    const inactive = ()=>{
-        
-    }
   return (
-    <>
-    {/* hacerlo select */}
-      <Button onClick={active}>Activos</Button>
-      <Button onClick={inactive}>No activos</Button>
-      {/* button todos */}
-    </>
+    <Box w="20%" m="10">
+      <Select placeholder="Elija una opcion" onChange={handleActive}>
+        <option value="">Todos</option>
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+      </Select>
+    </Box>
   );
 };
 
