@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ArrowRightIcon, ArrowLeftIcon } from "@chakra-ui/icons";
 
 function UsePagination(axiosData, list) {
   const [currentPage, setcurrentPage] = useState(axiosData.page);
@@ -53,11 +54,19 @@ function UsePagination(axiosData, list) {
   //maxPageNumberLimit va cambiando de 5 en 5, y pages.length es el total de paginas
   let pageIncrementBtn = null;
   if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+    pageIncrementBtn = (
+      <li onClick={handleNextbtn}>
+        <ArrowRightIcon />
+      </li>
+    );
   }
   let pageDecrementBtn = null;
   if (minPageNumberLimit >= 1) {
-    pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+    pageDecrementBtn = (
+      <li onClick={handlePrevbtn}>
+        <ArrowLeftIcon />{" "}
+      </li>
+    );
   }
 
   return {
