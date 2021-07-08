@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-const UseSortTable = (listToSort, originalKey) => {
+const UseSortTable = (listToSort) => {
   const [list, setList] = useState(listToSort);
-
-  const sortCommercesList = (key, inverse) => //sacar guion o sortCommerces
+  //ordenamos la lista si ya se ordeno se ordena a la inversa
+  const sortCommercesList = (key, inverse) =>
     inverse
       ? [...list].sort((b, a) =>
           a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0
@@ -11,11 +11,6 @@ const UseSortTable = (listToSort, originalKey) => {
       : [...list].sort((a, b) =>
           a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0
         );
-
-  // ordenamos la lista con el useEffect
-  useEffect(() => {
-    setList(sortCommercesList(originalKey));
-  }, [originalKey]);
 
   // devolvemos el estado que contiene la lista
   // ..el método para actualizar el estado

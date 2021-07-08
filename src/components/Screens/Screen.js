@@ -10,9 +10,14 @@ function ScreenTable({ axiosData, setactivityData, setDataQuery }) {
   const [saveIdOrCUIT, setSaveIdOrCUIT] = useState();
   const [idOrCuitStatus, setIdOrCuitidOrCuitStatus] = useState(true);
   const [searchboxquery, setSearchboxquery] = useState("");
-  const [activityvalue, setActivityvalue] = useState(); 
-  const [list, setList, sort] = UseSortTable(axiosData.data, saveIdOrCUIT);
-  const { 
+  const [activityvalue, setActivityvalue] = useState();
+  //le paso al hook que ordena la lista, la data y una key que sera la que ordene
+  const [list, setList, sortCommercesList] = UseSortTable(
+    axiosData.data,
+    
+  );
+  //le paso por parametroal hook de la paginacion la data entera, y tambien la lista ya ordenada
+  const {
     currentPage,
     handleNextbtn,
     handlePrevbtn,
@@ -22,23 +27,20 @@ function ScreenTable({ axiosData, setactivityData, setDataQuery }) {
     pageIncrementBtn,
     currentItems,
   } = UsePagination(axiosData, list);
-
+  //ordeno la lista en base a si la key o el status cambia
   useEffect(() => {
-    let newSortedList = sort(saveIdOrCUIT);
-    if (newSortedList[0] === list[0]) newSortedList = sort(saveIdOrCUIT, true);
+    let newSortedList = sortCommercesList(saveIdOrCUIT);
+    if (newSortedList[0] === list[0])
+      newSortedList = sortCommercesList(saveIdOrCUIT, idOrCuitStatus);
     setList(newSortedList);
   }, [saveIdOrCUIT, idOrCuitStatus]);
+  //cada vez que el valor de Activo cambia "1", "0" log guardo en una variable de estado
   useEffect(() => {
-    const activeAxios = () => {
-      setactivityData(activityvalue);
-    };
-    activeAxios();
+    setactivityData(activityvalue);
   }, [activityvalue]);
+//lo mismo con la query
   useEffect(() => {
-    const queryAxios = () => {
       setDataQuery(searchboxquery);
-    };
-    queryAxios();
   }, [searchboxquery]);
   return (
     <>

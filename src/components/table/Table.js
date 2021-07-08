@@ -1,25 +1,43 @@
 import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, Box } from "@chakra-ui/react";
-import { ArrowUpDownIcon } from '@chakra-ui/icons'
+import { ArrowUpDownIcon } from "@chakra-ui/icons";
 
-const TableCommerce = ({ currentItems,setSaveIdOrCUIT,setIdOrCuitidOrCuitStatus,idOrCuitStatus }) => {
+const TableCommerce = ({
+  currentItems,
+  setSaveIdOrCUIT,
+  setIdOrCuitidOrCuitStatus,
+  idOrCuitStatus,
+}) => {
+  // guarda el value "id" o "CUIT" y guarda un estado true o false que va a servir para el useeffect del sort
+  const handleClick = (e) => {
+    idOrCuitStatus
+      ? setIdOrCuitidOrCuitStatus(false)
+      : setIdOrCuitidOrCuitStatus(true);
+    setSaveIdOrCUIT(e);
+  };
 
-  const handleClick=(e)=>{
-    idOrCuitStatus?setIdOrCuitidOrCuitStatus(false): setIdOrCuitidOrCuitStatus(true)
-    setSaveIdOrCUIT(e)
-  }
-  
-  
   return (
     <>
       <Box>
         <Table variant="striped" borderRadius={20}>
           <Thead>
             <Tr>
-              <Th onClick={(e)=>{handleClick("id")}}>id <ArrowUpDownIcon /></Th>
-              <Th >Comercio</Th>
-              
-              <Th onClick={(e)=>{handleClick("CUIT")}}>CUIT <ArrowUpDownIcon /></Th>
+              <Th
+                onClick={(e) => {
+                  handleClick("id");
+                }}
+              >
+                id <ArrowUpDownIcon />
+              </Th>
+              <Th>Comercio</Th>
+
+              <Th
+                onClick={(e) => {
+                  handleClick("CUIT");
+                }}
+              >
+                CUIT <ArrowUpDownIcon />
+              </Th>
               <Th>Concepto 1</Th>
               <Th>Concepto2</Th>
               <Th>Concepto 3</Th>
@@ -45,16 +63,8 @@ const TableCommerce = ({ currentItems,setSaveIdOrCUIT,setIdOrCuitidOrCuitStatus,
                   <Td>{element.Concepto5}</Td>
                   <Td>{element.Concepto6}</Td>
                   <Td>{element.BalanceActual}</Td>
-                  <Td>
-                    {element.Activo ? <p>Activo</p> : <p>Inactivo</p>}
-                  </Td>
+                  <Td>{element.Activo ? <p>Activo</p> : <p>Inactivo</p>}</Td>
                   <Td>{element.UltimaVenta}</Td>
-                  <Td>
-                    <ul>
-                      {/* <UpdateButton element={element} />
-                    <Deletebutton element={element} /> */}
-                    </ul>
-                  </Td>
                 </Tr>
               ))
             ) : (

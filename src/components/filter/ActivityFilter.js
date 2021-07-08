@@ -2,6 +2,7 @@ import React from "react";
 import { Select, Box } from "@chakra-ui/react";
 
 const FilterActive = ({ setActivityvalue }) => { 
+  //Se guarda el valor de activo
   const handleChange = (e) => { 
     setActivityvalue(e.target.value);
   };
