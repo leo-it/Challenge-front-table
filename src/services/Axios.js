@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { URL_FALSA, URL_REAL } from "../constants/Constants";
+import { URL_DUMMY, URL_COMMERCES } from "../constants/Constants";
 
-const UseAxios = (dataActive, dataQuery) => {
-  const [axiosData, setAxiosData] = useState();
+const UseAxios = (activityData, dataQuery) => { 
+  const [axiosData, setAxiosData] = useState(); 
 
-  const queryAndActiveOption = `${URL_REAL}?q={"$and": [{"ID": {"$regex" :${dataQuery}}},{"COMERCIO":{"$regex" :${dataQuery}}},{CUIT:{"$regex" :${dataQuery}}},{"Active":${dataActive}}]`,
-    activeOption = `${URL_REAL}?q={"Active":${dataActive}}`,
-    queryOption = `${URL_REAL}?q={"$or": [{"ID": {"$regex" :${dataQuery}}},{"COMERCIO":{"$regex" :${dataQuery}}},{CUIT:{"$regex" :${dataQuery}}}]`;
+  const queryAndActiveOption = `${URL_COMMERCES}?q={"$and": [{"ID": {"$regex" :${dataQuery}}},{"COMERCIO":{"$regex" :${dataQuery}}},{CUIT:{"$regex" :${dataQuery}}},{"Active":${activityData}}]`,
+    activeOption = `${URL_COMMERCES}?q={"Active":${activityData}}`,
+    queryOption = `${URL_COMMERCES}?q={"$or": [{"ID": {"$regex" :${dataQuery}}},{"COMERCIO":{"$regex" :${dataQuery}}},{CUIT:{"$regex" :${dataQuery}}}]`;
 
   useEffect(() => {
     const getData = async (URL) => {
@@ -19,21 +19,21 @@ const UseAxios = (dataActive, dataQuery) => {
       }
     };
 
-    if (dataActive && dataQuery) {
+    if (activityData && dataQuery) {
       console.log(queryAndActiveOption);
       /*       getData(queryAndActiveOption); */
-    } else if (dataActive) {
+    } else if (activityData) {
       console.log(activeOption);
       /*       getData(activeOption);*/
     } else if (dataQuery) {
       console.log(queryOption);
       /* getData(queryOption); */
     } else {
-      console.log(`${URL_REAL} `);
-      getData(URL_FALSA);
+      console.log(`${URL_COMMERCES} `);
+      getData(URL_DUMMY);
     }
 
-  }, [dataActive, dataQuery]);
+  }, [activityData, dataQuery]);
 
   return { axiosData };
 };

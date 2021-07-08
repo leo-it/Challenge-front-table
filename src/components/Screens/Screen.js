@@ -3,16 +3,16 @@ import UsePagination from "../pagination/UsePagination";
 import TableCommerce from "../table/Table";
 import Pagination from "../pagination/Pagination";
 import UseSortTable from "../sort/UseSortTable";
-import FilterActive from "../filter/FilterActive";
+import FilterActive from "../filter/ActivityFilter";
 import SearchBox from "../searchBox/SearchBox";
 
-function ScreenTable({ axiosData, setDataActive, setDataQuery }) {
-  const [order, setOrder] = useState();
-  const [status, setStatus] = useState(true);
-  const [query, setQuery] = useState("");
-  const [valueActive, setValueActive] = useState();
-  const [list, setList, sort] = UseSortTable(axiosData.data, order);
-  const {
+function ScreenTable({ axiosData, setactivityData, setDataQuery }) {
+  const [saveIdOrCUIT, setSaveIdOrCUIT] = useState();
+  const [idOrCuitStatus, setIdOrCuitidOrCuitStatus] = useState(true);
+  const [searchboxquery, setSearchboxquery] = useState("");
+  const [activityvalue, setActivityvalue] = useState(); 
+  const [list, setList, sort] = UseSortTable(axiosData.data, saveIdOrCUIT);
+  const { 
     currentPage,
     handleNextbtn,
     handlePrevbtn,
@@ -24,31 +24,31 @@ function ScreenTable({ axiosData, setDataActive, setDataQuery }) {
   } = UsePagination(axiosData, list);
 
   useEffect(() => {
-    let newSortedList = sort(order);
-    if (newSortedList[0] === list[0]) newSortedList = sort(order, true);
+    let newSortedList = sort(saveIdOrCUIT);
+    if (newSortedList[0] === list[0]) newSortedList = sort(saveIdOrCUIT, true);
     setList(newSortedList);
-  }, [order, status]);
+  }, [saveIdOrCUIT, idOrCuitStatus]);
   useEffect(() => {
     const activeAxios = () => {
-      setDataActive(valueActive);
+      setactivityData(activityvalue);
     };
     activeAxios();
-  }, [valueActive]);
+  }, [activityvalue]);
   useEffect(() => {
     const queryAxios = () => {
-      setDataQuery(query);
+      setDataQuery(searchboxquery);
     };
     queryAxios();
-  }, [query]);
+  }, [searchboxquery]);
   return (
     <>
-      <SearchBox setQuery={setQuery} />
-      <FilterActive setValueActive={setValueActive} />
+      <SearchBox setSearchboxquery={setSearchboxquery} />
+      <FilterActive setActivityvalue={setActivityvalue} />
 
       <TableCommerce
-        setOrder={setOrder}
-        status={status}
-        setStatus={setStatus}
+        setSaveIdOrCUIT={setSaveIdOrCUIT}
+        idOrCuitStatus={idOrCuitStatus}
+        setIdOrCuitidOrCuitStatus={setIdOrCuitidOrCuitStatus}
         currentItems={currentItems}
       />
       <Pagination

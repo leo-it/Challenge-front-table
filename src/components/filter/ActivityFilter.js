@@ -1,14 +1,14 @@
 import React from "react";
 import { Select, Box } from "@chakra-ui/react";
 
-const FilterActive = ({ setValueActive }) => {
-  const handleActive = (e) => {
-    setValueActive(e.target.value);
+const FilterActive = ({ setActivityvalue }) => { 
+  const handleChange = (e) => { 
+    setActivityvalue(e.target.value);
   };
 
   return (
     <Box w="20%" m="10">
-      <Select placeholder="Elija una opcion" onChange={handleActive}>
+      <Select placeholder="Elija una opcion" onChange={handleChange}>
         <option value="">Todos</option>
         <option value="1">Activo</option>
         <option value="0">Inactivo</option>

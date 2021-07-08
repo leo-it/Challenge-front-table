@@ -4,16 +4,16 @@ import ScreenTable from "./components/Screens/Screen";
 import UseAxios from "./services/Axios";
 
 function App() {
-  const [dataActive, setDataActive] = useState("");
+  const [activityData, setactivityData] = useState("");
   const [dataQuery, setDataQuery] = useState("");
-  const { axiosData } = UseAxios(dataActive, dataQuery);
+  const { axiosData } = UseAxios(activityData, dataQuery);
   return (
     <div className="App">
       {axiosData ? (
         <>
           <ScreenTable
             axiosData={axiosData}
-            setDataActive={setDataActive}
+            setactivityData={setactivityData}
             setDataQuery={setDataQuery}
           />
         </>

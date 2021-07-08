@@ -1,2 +1,2 @@
-export const URL_FALSA="dummy.json"
-export const URL_REAL="https://api.koibanx.com/stores"
+export const URL_DUMMY="dummyCommerces.json" 
+export const URL_COMMERCES="https://api.koibanx.com/stores" 

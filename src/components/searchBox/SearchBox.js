@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Center, Box } from "@chakra-ui/react";
 
-export const SearchBox = ({ setQuery }) => {
+export const SearchBox = ({ setSearchboxquery }) => {
   return (
     <div>
       <Box w="50%" m="10">
@@ -10,7 +10,7 @@ export const SearchBox = ({ setQuery }) => {
             name="search"
             placeholder="Buscar"
             onChange={(event) => {
-              setQuery(event.target.value);
+              setSearchboxquery(event.target.value);
             }}
           />
         </Center>

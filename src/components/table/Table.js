@@ -2,11 +2,11 @@ import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, Box } from "@chakra-ui/react";
 import { ArrowUpDownIcon } from '@chakra-ui/icons'
 
-const TableCommerce = ({ currentItems,setOrder,setStatus,status }) => {
+const TableCommerce = ({ currentItems,setSaveIdOrCUIT,setIdOrCuitidOrCuitStatus,idOrCuitStatus }) => {
 
   const handleClick=(e)=>{
-    status?setStatus(false): setStatus(true)
-    setOrder(e)
+    idOrCuitStatus?setIdOrCuitidOrCuitStatus(false): setIdOrCuitidOrCuitStatus(true)
+    setSaveIdOrCUIT(e)
   }
   
   
